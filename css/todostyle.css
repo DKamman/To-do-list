@@ -1,0 +1,15 @@
+.main-content {
+  min-height: 100vh;
+  background-color: #d9e7f5; }
+  .main-content .tab-list {
+    width: 100%; }
+    .main-content .tab-list .tab {
+      border: solid 1px #a5b5d3; }
+  .main-content .list {
+    width: 30rem;
+    margin: 0 auto;
+    margin-top: 10rem; }
+    .main-content .list .card {
+      min-height: 30rem; }
+
+/*# sourceMappingURL=todostyle.css.map */

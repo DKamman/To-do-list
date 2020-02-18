@@ -1,0 +1,20 @@
+.main-content {
+    min-height: 100vh;
+    background-color: rgb(217, 231, 245);
+    .tab-list {
+        width: 100%;
+        .tab {
+            border: solid 1px rgb(165, 181, 211);
+        }
+    }
+
+    .list {
+        width: 30rem;
+        margin: 0 auto;
+        margin-top: 10rem;
+
+        .card {
+            min-height: 30rem;
+        }        
+    }
+}
