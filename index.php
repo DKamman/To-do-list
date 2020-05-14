@@ -49,7 +49,7 @@
             <div class="col-lg-2">
               <div class="newlist">
                 <!-- <button action="/newlist.php" value="Submit">New List</button> -->
-                <a href="newlist.php">New List +</a>
+                <a href="newlist.php">Nieuwe Lijst +</a>
               </div>
             </div>
 
