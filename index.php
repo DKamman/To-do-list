@@ -16,38 +16,43 @@
   <body>
     <div class="main-content">
       <div class="tab-list">
-        <div class="container">
+        <div class="container-fluid tabslist">
+
           <div class="row">
-            <div class="col-lg-2">
+
+            <div class="col-lg-2 lesspadding">
               <div class="tab">
-                <p>test sentence</p>
+                <h5 class="title">test sentence test sentence test te</h5> <!-- Max amount of chars in a title -->
               </div>
             </div>
-            <div class="col-lg-2">
-              <div class="tab">
-                <p>test sentence 2</p>
+            <div class="col-lg-2 lesspadding">
+              <div class="tab"> 
+                <h5 class="title">test sentence</h5>
               </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 lesspadding">
               <div class="tab">
-                <p>test sentence 2</p>
+                <h5 class="title">test sentence</h5>
               </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 lesspadding">
               <div class="tab">
-                <p>test sentence 2</p>
+                <h5 class="title">test sentence</h5>
               </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 lesspadding">
               <div class="tab">
-                <p>test sentence 2</p>
+                <h5 class="title">test sentence</h5>
               </div>
             </div>
+
             <div class="col-lg-2">
-              <div class="tab">
-                <p>test sentence 2</p>
+              <div class="newlist">
+                <!-- <button action="/newlist.php" value="Submit">New List</button> -->
+                <a href="newlist.php">New List +</a>
               </div>
             </div>
+
           </div>
         </div>
       </div>

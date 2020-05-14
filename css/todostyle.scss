@@ -1,10 +1,29 @@
 .main-content {
     min-height: 100vh;
     background-color: rgb(217, 231, 245);
+
     .tab-list {
         width: 100%;
+
         .tab {
             border: solid 1px rgb(165, 181, 211);
+            border-radius: 0px 0px 5px 5px;
+            min-height: 40px;
+
+            .title {
+                margin-bottom: 0;
+                margin-top: 3px;
+                text-align: center;
+            }
+        }
+
+        .newlist {
+            a {
+                color: black;
+                font-weight: bold;
+                float: right;
+                line-height: 40px;
+            }
         }
     }
 
@@ -16,5 +35,10 @@
         .card {
             min-height: 30rem;
         }        
+    }
+
+    .lesspadding {
+        padding-left: 5px;
+        padding-right: 5px;
     }
 }

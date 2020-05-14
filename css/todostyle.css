@@ -4,12 +4,26 @@
   .main-content .tab-list {
     width: 100%; }
     .main-content .tab-list .tab {
-      border: solid 1px #a5b5d3; }
+      border: solid 1px #a5b5d3;
+      border-radius: 0px 0px 5px 5px;
+      min-height: 40px; }
+      .main-content .tab-list .tab .title {
+        margin-bottom: 0;
+        margin-top: 3px;
+        text-align: center; }
+    .main-content .tab-list .newlist a {
+      color: black;
+      font-weight: bold;
+      float: right;
+      line-height: 40px; }
   .main-content .list {
     width: 30rem;
     margin: 0 auto;
     margin-top: 10rem; }
     .main-content .list .card {
       min-height: 30rem; }
+  .main-content .lesspadding {
+    padding-left: 5px;
+    padding-right: 5px; }
 
 /*# sourceMappingURL=todostyle.css.map */
