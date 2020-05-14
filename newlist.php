@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <div style="margin-top:1em;">
                             <a href="index.php"><button type="button" class="btn btn-danger">Annuleren</button></a>
-                            <button type="submit" class="btn btn-primary">Toevoegen</button>
+                            <button type="submit" class="btn btn-success">Toevoegen</button>
                         </div>
 
                         </div>

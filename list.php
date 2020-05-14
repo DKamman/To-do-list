@@ -2,12 +2,20 @@
 
 require('inc/dbconn.php');
 
-$sql = 'SELECT id, title FROM lists';
+$sql = 'SELECT * FROM lists';
 $query = $conn->prepare($sql);
 $query->execute();
 
 $result = $query->fetchAll();
-var_dump($result);
+// var_dump($result);
+
+$sql = 'SELECT * FROM lists WHERE id =:listid';
+$query = $conn->prepare($sql);
+$query->bindParam(':listid', $_GET['listid']);
+$query->execute();
+
+$listresult = $query->fetch();
+var_dump($listresult);
 
 ?>
 
@@ -64,12 +72,20 @@ var_dump($result);
       <div class="list">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Welkom op de To-Do List app</h5>
-            <p class="card-text">Je kan rechtsboven in een lijst toevoegen en door al je lijsten heen klikken met de tabjes.</p>
+            <h5 class="card-title"><?= $listresult['title']?></h5>
+            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
             <ul>
-              <li>En hier komen</li>
-              <li>Je taken</li>
-              <li>Te staan</li>
+
+                <?php
+                foreach ($listresult as $listrow) {
+                ?>
+
+                <li><?php echo $listrow['items']?></li>
+
+                <?php
+                }
+                ?>
+
             </ul>
           </div>
         </div>

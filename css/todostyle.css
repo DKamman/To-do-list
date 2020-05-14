@@ -3,14 +3,23 @@
   background-color: #d9e7f5; }
   .main-content .tab-list {
     width: 100%; }
-    .main-content .tab-list .tab {
-      border: solid 1px #a5b5d3;
-      border-radius: 0px 0px 5px 5px;
-      min-height: 40px; }
-      .main-content .tab-list .tab .title {
-        margin-bottom: 0;
-        margin-top: 3px;
-        text-align: center; }
+    .main-content .tab-list .tab-link {
+      color: black;
+      text-decoration: none; }
+      .main-content .tab-list .tab-link .tab {
+        border: solid 1px #a5b5d3;
+        border-radius: 0px 0px 5px 5px;
+        min-height: 40px;
+        padding-top: 5px;
+        transition: all .2s ease; }
+        .main-content .tab-list .tab-link .tab .title {
+          margin-bottom: 0;
+          text-align: center; }
+      .main-content .tab-list .tab-link:hover .tab {
+        border: solid 1px #949494;
+        -webkit-box-shadow: 2px 2px 3px 0px rgba(148, 148, 148, 0.5);
+        -moz-box-shadow: 2px 2px 3px 0px rgba(148, 148, 148, 0.5);
+        box-shadow: 2px 2px 3px 0px rgba(148, 148, 148, 0.5); }
     .main-content .tab-list .newlist a {
       color: black;
       font-weight: bold;
