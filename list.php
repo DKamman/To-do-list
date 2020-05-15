@@ -79,9 +79,9 @@ print_r($arr);
       <div class="list">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title"><?= $listresult['title']?></h5>
+            <h5 class="card-title"><?= $listresult['title']?><a href="edittitle.php"><img class="edit-logo" src="img/pencil.png" alt="edit-logo"></a><a href="deletelist.php?listid=<?= $listresult['id']?>"><img src="img/trashbin.png" alt="trashbin"></a></h5>
             <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-            <ul>
+            <ol>
 
                 <?php
                 foreach ($arr as $listrow) {
@@ -93,7 +93,7 @@ print_r($arr);
                 }
                 ?>
 
-            </ul>
+            </ol>
           </div>
         </div>
       </div>

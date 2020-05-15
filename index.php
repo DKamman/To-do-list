@@ -66,11 +66,11 @@ var_dump($result);
           <div class="card-body">
             <h5 class="card-title">Welkom op de To-Do List app</h5>
             <p class="card-text">Je kan rechtsboven in een lijst toevoegen en door al je lijsten heen klikken met de tabjes.</p>
-            <ul>
+            <ol>
               <li>En hier komen</li>
               <li>Je taken</li>
               <li>Te staan</li>
-            </ul>
+            </ol>
           </div>
         </div>
       </div>
