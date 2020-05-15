@@ -2,20 +2,27 @@
 
 require('inc/dbconn.php');
 
-$sql = 'SELECT * FROM lists';
+// Selects all to-do lists for display on the tabs
+$sql = 'SELECT id, title FROM lists';
 $query = $conn->prepare($sql);
 $query->execute();
 
 $result = $query->fetchAll();
 // var_dump($result);
 
+// Selects all info from the to-do list where id is selected is
 $sql = 'SELECT * FROM lists WHERE id =:listid';
 $query = $conn->prepare($sql);
 $query->bindParam(':listid', $_GET['listid']);
 $query->execute();
 
 $listresult = $query->fetch();
-var_dump($listresult);
+
+$str = $listresult['items'];
+
+$arr = explode(", ", $str);
+// var_dump($arr);
+print_r($arr);
 
 ?>
 
@@ -77,10 +84,10 @@ var_dump($listresult);
             <ul>
 
                 <?php
-                foreach ($listresult as $listrow) {
+                foreach ($arr as $listrow) {
                 ?>
 
-                <li><?php echo $listrow['items']?></li>
+                <li><?php echo $listrow?></li>
 
                 <?php
                 }
