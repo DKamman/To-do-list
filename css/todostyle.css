@@ -35,6 +35,21 @@
         margin-left: 5px;
         width: 20px;
         height: 20px; }
+      .main-content .list .card .card-body form img {
+        position: absolute;
+        right: 20px;
+        width: 20px;
+        height: 20px; }
+      .main-content .list .card .card-body form h6 {
+        margin-bottom: 0;
+        margin-top: 10px; }
+      .main-content .list .card .card-end {
+        height: auto;
+        padding: 20px; }
+        .main-content .list .card .card-end button {
+          position: absolute;
+          bottom: 20px;
+          right: 20px; }
   .main-content .lesspadding {
     padding-left: 5px;
     padding-right: 5px; }

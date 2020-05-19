@@ -7,7 +7,7 @@ $query = $conn->prepare($sql);
 $query->execute();
 
 $result = $query->fetchAll();
-var_dump($result);
+// var_dump($result);
 
 ?>
 

@@ -10,7 +10,7 @@ $query->execute();
 $result = $query->fetchAll();
 // var_dump($result);
 
-// Selects all info from the to-do list where id is selected is
+// Selects all info from the to-do list where id is selected id
 $sql = 'SELECT * FROM lists WHERE id =:listid';
 $query = $conn->prepare($sql);
 $query->bindParam(':listid', $_GET['listid']);
@@ -21,9 +21,28 @@ $listresult = $query->fetch();
 $str = $listresult['items'];
 
 $arr = explode(", ", $str);
-// var_dump($arr);
-print_r($arr);
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $stmt = $conn->prepare('UPDATE lists SET title=:title, items=:items WHERE id = :id');
+
+  $stmt->bindParam(':title', $title);
+  $stmt->bindParam(':items', $items);
+  $stmt->bindParam(':id', $id);
+
+  $id     = $_POST['id'];
+  $title  = $_POST['title'];
+  $items  = implode(', ', $_POST['items']);
+
+  $stmt->execute();
+
+  $conn = null;
+
+?>
+
+
+<?php
+header('Refresh:3; url=index.php'); } else {
 ?>
 
 <!DOCTYPE html>
@@ -77,10 +96,11 @@ print_r($arr);
       </div>
 
       <div class="list">
-        <div class="card">
+        <div id="standardlist" class="card" style="display: block;">
           <div class="card-body">
             <h5 class="card-title"><?= $listresult['title']?>
-              <a href="edittitle.php"><img class="edit-logo" src="img/pencil.png" alt="edit-logo"></a>
+              <!-- <button class="btn btn-link" onClick="editList()"><img class="edit-logo" src="img/pencil.png" alt="edit-logo"></button> -->
+              <a onClick="editList()"><img class="edit-logo" src="img/pencil.png" alt="edit-logo"></a>
               <a href="deletelist.php?listid=<?= $listresult['id']?>"><img src="img/trashbin.png" alt="trashbin"></a>
             </h5>
             <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
@@ -99,13 +119,55 @@ print_r($arr);
             </ol>
           </div>
         </div>
+
+                <!-- Begin of edit card -->
+
+        <div id="editlist" class="card" style="display: none;">
+          <div class="card-body">
+            <form action="" method="post">
+              <input type="hidden" name="id" value="<?php echo $listresult['id'];?>">
+              <h5>Titel<a onClick="cancelEdit()"><img class="cancel-logo" src="img/cross.png" alt="edit-logo"></a></h5>
+              <input type="text" name="title" value="<?= $listresult['title']?>">
+              </input>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+              <h6>Items</h6>
+              <ol>
+
+                  <?php
+                  $i = 1;
+                  foreach ($arr as $listrow) {
+                  ?>
+
+                  <li><input type="text" name="items[<?php echo $i?>]" value="<?php echo $listrow?>"></li>
+
+                  <?php
+                  $i++;
+                  }
+                  ?>
+
+              </ol>
+          </div>
+          
+          <div class="card-end">
+            <button type="submit" class="btn btn-success">Opslaan</button>
+          </div>
+          </form>
+        </div>
+
+                <!-- End of edit card -->
+
       </div>
     </div> 
 
     <!-- Optional JavaScript -->
+    <script src="js/script.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<?php
+}
+?>
