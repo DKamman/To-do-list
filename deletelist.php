@@ -89,7 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="form-group">
 
                         <input class="form-control" type="hidden" name="id" value="<?php echo $result['id'];?>">
-                        <p><?php echo $result['id'];?></p>
 
                         <div style="margin-top: 1em;">
                           <button type="submit" class="btn btn-danger">Verwijderen</button>
