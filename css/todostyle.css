@@ -43,9 +43,15 @@
       .main-content .list .card .card-body form h6 {
         margin-bottom: 0;
         margin-top: 10px; }
+      .main-content .list .card .card-body form ol img {
+        margin-top: 5px; }
+      .main-content .list .card .card-body img {
+        width: 25px;
+        height: 25px;
+        margin-left: 200px; }
       .main-content .list .card .card-end {
         height: auto;
-        padding: 20px; }
+        padding: 30px; }
         .main-content .list .card .card-end button {
           position: absolute;
           bottom: 20px;
