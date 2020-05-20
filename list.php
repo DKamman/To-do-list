@@ -3,7 +3,7 @@
 require('inc/dbconn.php');
 
 // Selects all to-do lists for display on the tabs
-$sql = 'SELECT id, title FROM lists';
+$sql = 'SELECT * FROM lists';
 $query = $conn->prepare($sql);
 $query->execute();
 
@@ -15,67 +15,15 @@ $sql = 'SELECT * FROM lists WHERE id =:listid';
 $query = $conn->prepare($sql);
 $query->bindParam(':listid', $_GET['listid']);
 $query->execute();
-
 $listresult = $query->fetch();
 
-$str = $listresult['items'];
-$arr = explode(", ", $str);
+$sql = 'SELECT `description` FROM `tasks` WHERE list_id =:listid';
+$query = $conn->prepare($sql);
+$query->bindParam(':listid', $_GET['listid']);
+$query->execute();
+$taskresult = $query->fetchAll();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-  $stmt = $conn->prepare('UPDATE lists SET title=:title, items=:items WHERE id = :id');
-
-  $stmt->bindParam(':title', $title);
-  $stmt->bindParam(':items', $items);
-  $stmt->bindParam(':id', $id);
-
-  $id     = $_POST['id'];
-  $title  = $_POST['title'];
-  $items  = implode(', ', $_POST['items']);
-
-  $stmt->execute();
-
-  $conn = null;
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Local CSS -->
-    <link rel="stylesheet" href="css/todostyle.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>To do list</title>
-  </head>
-  <body>
-
-    <div class="main-content">
-        <div class="list" style="margin-top: 0; padding-top: 12.5rem">
-            <div class="card" style="min-height: 0;">
-                <div class="card-body">
-                    <h5 class="card-title">Lijst succesvol bewerkt</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
-
-<?php
-header('Refresh:1; url=list.php?listid='.$id); } else {
+var_dump($taskresult);
 ?>
 
 <!DOCTYPE html>
@@ -140,16 +88,16 @@ header('Refresh:1; url=list.php?listid='.$id); } else {
             <ol>
 
                 <?php
-                // var_dump($arr);
-                if (count($arr) == 1) {
+                // var_dump($taskresult);
+                if (count($taskresult) == 0) {
                   ?>
                   <p>U heeft nog geen items</p>
                   <?php
                 } else {
-                foreach ($arr as $listrow) {
+                foreach ($taskresult as $listrow) {
                 ?>
 
-                <li><?php echo $listrow?></li>
+                <li><?php echo $listrow['description']?></li>
 
                 <?php
                   }
@@ -164,7 +112,7 @@ header('Refresh:1; url=list.php?listid='.$id); } else {
 
         <div id="editlist" class="card" style="display: none;">
           <div class="card-body">
-            <form action="" method="post">
+            <form action="php/editlist.php" method="post">
               <input type="hidden" name="id" value="<?php echo $listresult['id'];?>">
               <h5>Titel<a onClick="cancelEdit()"><img class="cancel-logo" src="img/cross.png" alt="edit-logo"></a></h5>
               <input type="text" name="title" value="<?= $listresult['title']?>">
@@ -175,16 +123,16 @@ header('Refresh:1; url=list.php?listid='.$id); } else {
 
                   <?php
                   $i = 1;
-                  // var_dump($arr);
-                  if (count($arr) == 1) {
+                  // var_dump($taskresult);
+                  if (count($taskresult) == 0) {
                     ?>
                     <p>U heeft nog geen items</p>
                     <?php
                   } else {
-                  foreach ($arr as $listrow) {
+                  foreach ($taskresult as $listrow) {
                   ?>
 
-                  <li><input type="text" name="items[<?php echo $i?>]" value="<?php echo $listrow?>"></li>
+                  <li><input type="text" name="items[<?php echo $i?>]" value="<?php echo $listrow['description']?>"></li>
 
                   <?php
                     $i++;
@@ -214,7 +162,3 @@ header('Refresh:1; url=list.php?listid='.$id); } else {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
-
-<?php
-}
-?>

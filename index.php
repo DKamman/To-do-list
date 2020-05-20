@@ -2,7 +2,7 @@
 
 require('inc/dbconn.php');
 
-$sql = 'SELECT id, title FROM lists';
+$sql = 'SELECT * FROM lists';
 $query = $conn->prepare($sql);
 $query->execute();
 

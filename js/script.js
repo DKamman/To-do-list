@@ -13,8 +13,6 @@ function cancelEdit() {
     listStandard.style.display = "block";
 }
 
-
-
 // var array = [
 //     {type: 'minute', seconds: 60}, 
 //     {type: 'hour', seconds: 3600}, 
@@ -38,5 +36,3 @@ function cancelEdit() {
 // }
 
 // console.log(durationCalculation(time));
-
-
