@@ -97,7 +97,7 @@ var_dump($taskresult);
                 foreach ($taskresult as $listrow) {
                 ?>
 
-                <li><?php echo $listrow['description']?></li>
+                <li><?php echo $listrow['task']?></li>
 
                 <?php
                   }
@@ -133,7 +133,7 @@ var_dump($taskresult);
                   foreach ($taskresult as $taskrow) {
                   ?>
 
-                  <li> <?= $taskrow['id']?> <input type="text" name="items[<?php echo $i?>]" value="<?php echo $taskrow['description']?>"><a href="deletetask.php?listid=<?= $taskrow['id']?>"><img src="img/trashbin.png" alt="trashbin"></a></li>
+                  <li> <?= $taskrow['id']?> <input type="text" name="items[<?php echo $i?>]" value="<?php echo $taskrow['task']?>"><a href="deletetask.php?listid=<?= $taskrow['id']?>"><img src="img/trashbin.png" alt="trashbin"></a></li>
 
                   <?php
                     $i++;

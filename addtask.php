@@ -38,7 +38,15 @@ var_dump($list_id);
                         <input class="form-control" type="text" name="title" required>
 
                         <label for="duration">Hoelang denk je er mee bezig te zijn</label>
-                        <input type="text"><input type="text">
+                        <input type="number" name="number">
+                        <select name="time">
+                            <option value="minutes" name="minutes">Minuten</option>
+                            <option value="hours" name="hours">Uren</option>
+                            <option value="days" name="days">Dagen</option>
+                            <option value="weeks" name="weeks">Weken</option>
+                            <option value="months" name="months">Maanden</option>
+                            <option value="years" name="years">Jaar</option>                            
+                        </select>
 
                         <input type="hidden" name="list_id" value="<?php echo $list_id ?>">
 

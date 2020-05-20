@@ -59,6 +59,10 @@
                 }
 
                 form {     
+                    label {
+                        margin-top: 15px;
+                    }
+
                     img {
                         position: absolute;
                         right: 20px;
@@ -86,7 +90,7 @@
 
             .card-end {
                 height: auto;
-                padding: 30px;
+                padding: 20px;
 
                 button {
                     position: absolute;
