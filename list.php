@@ -17,7 +17,7 @@ $query->bindParam(':listid', $_GET['listid']);
 $query->execute();
 $listresult = $query->fetch();
 
-$sql = 'SELECT `description` FROM `tasks` WHERE list_id =:listid';
+$sql = 'SELECT * FROM `tasks` WHERE list_id =:listid';
 $query = $conn->prepare($sql);
 $query->bindParam(':listid', $_GET['listid']);
 $query->execute();
@@ -105,6 +105,7 @@ var_dump($taskresult);
                 ?>
 
             </ol>
+            <a href="addtask.php?listid=<?= $listresult['id']?>"><img src="img/plus.png" alt=""></a>
           </div>
         </div>
 
@@ -129,10 +130,10 @@ var_dump($taskresult);
                     <p>U heeft nog geen items</p>
                     <?php
                   } else {
-                  foreach ($taskresult as $listrow) {
+                  foreach ($taskresult as $taskrow) {
                   ?>
 
-                  <li><input type="text" name="items[<?php echo $i?>]" value="<?php echo $listrow['description']?>"></li>
+                  <li> <?= $taskrow['id']?> <input type="text" name="items[<?php echo $i?>]" value="<?php echo $taskrow['description']?>"><a href="deletetask.php?listid=<?= $taskrow['id']?>"><img src="img/trashbin.png" alt="trashbin"></a></li>
 
                   <?php
                     $i++;
