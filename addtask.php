@@ -38,7 +38,7 @@ var_dump($list_id);
                             <input class="form-control" type="text" name="task" required>
 
                             <label for="duration">Hoelang denk je er mee bezig te zijn</label>
-                            <div><input class="form-control" id="minute-input" type="number" name="duration" placeholder="2"><span style="margin-left: 5px;">Minuten</span></div>
+                            <div><input class="form-control" id="minute-input" type="number" name="duration" placeholder="2" value="2"><span style="margin-left: 5px;">Minuten</span></div>
 
                             <input type="hidden" name="list_id" value="<?php echo $list_id ?>">
 
