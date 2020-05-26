@@ -114,9 +114,9 @@ var_dump($taskresult);
         <div id="editlist" class="card" style="display: none;">
           <div class="card-body">
             <form action="php/editlist.php" method="post">
-              <input type="hidden" name="id" value="<?php echo $listresult['id'];?>">
+              <input type="hidden" name="id" value="<?php echo $listresult['id'];?>"></input>
               <h5>Titel<a onClick="cancelEdit()"><img class="cancel-logo" src="img/cross.png" alt="edit-logo"></a></h5>
-              <input type="text" name="title" value="<?= $listresult['title']?>">
+              <input class="form-control" type="text" name="title" value="<?= $listresult['title']?>">
               </input>
               <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
               <h6>Items</h6>
@@ -133,7 +133,7 @@ var_dump($taskresult);
                   foreach ($taskresult as $taskrow) {
                   ?>
 
-                  <li> <?= $taskrow['id']?> <input type="text" name="items[<?php echo $i?>]" value="<?php echo $taskrow['task']?>"><a href="deletetask.php?listid=<?= $taskrow['id']?>"><img src="img/trashbin.png" alt="trashbin"></a></li>
+                  <li> <?= $taskrow['id']?> <input type="text" class="form-control edit-input" name="items[<?php echo $i?>]" value="<?php echo $taskrow['task']?>"><a href="deletetask.php?taskid=<?= $taskrow['id']?>"><img class="trashbin" src="img/trashbin.png" alt="trashbin"></a></li>
 
                   <?php
                     $i++;

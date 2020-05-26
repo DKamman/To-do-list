@@ -35,22 +35,32 @@
         margin-left: 5px;
         width: 20px;
         height: 20px; }
-      .main-content .list .card .card-body form label {
-        margin-top: 15px; }
-      .main-content .list .card .card-body form img {
+      .main-content .list .card .card-body form .form-group #minute-input {
+        display: inline;
+        width: 50%; }
+      .main-content .list .card .card-body form .form-group label {
+        margin-top: 20px; }
+      .main-content .list .card .card-body form .form-group img {
         position: absolute;
         right: 20px;
         width: 20px;
         height: 20px; }
-      .main-content .list .card .card-body form h6 {
+      .main-content .list .card .card-body form .form-group h6 {
         margin-bottom: 0;
         margin-top: 10px; }
-      .main-content .list .card .card-body form ol img {
+      .main-content .list .card .card-body form .form-group ol img {
         margin-top: 5px; }
       .main-content .list .card .card-body img {
         width: 25px;
         height: 25px;
         margin-left: 200px; }
+      .main-content .list .card .card-body .trashbin {
+        margin-left: 10px;
+        margin-bottom: 3px; }
+      .main-content .list .card li .edit-input {
+        display: inline;
+        width: 50%;
+        margin-bottom: 5px; }
       .main-content .list .card .card-end {
         height: auto;
         padding: 20px; }

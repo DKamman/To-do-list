@@ -34,26 +34,18 @@ var_dump($list_id);
                     <form action="php/addtask.php" method="post">
                         <div class="form-group">
 
-                        <label for="description">Taak</label>
-                        <input class="form-control" type="text" name="title" required>
+                            <label for="description">Taak</label>
+                            <input class="form-control" type="text" name="task" required>
 
-                        <label for="duration">Hoelang denk je er mee bezig te zijn</label>
-                        <input type="number" name="number">
-                        <select name="time">
-                            <option value="minutes" name="minutes">Minuten</option>
-                            <option value="hours" name="hours">Uren</option>
-                            <option value="days" name="days">Dagen</option>
-                            <option value="weeks" name="weeks">Weken</option>
-                            <option value="months" name="months">Maanden</option>
-                            <option value="years" name="years">Jaar</option>                            
-                        </select>
+                            <label for="duration">Hoelang denk je er mee bezig te zijn</label>
+                            <div><input class="form-control" id="minute-input" type="number" name="duration" placeholder="2"><span style="margin-left: 5px;">Minuten</span></div>
 
-                        <input type="hidden" name="list_id" value="<?php echo $list_id ?>">
+                            <input type="hidden" name="list_id" value="<?php echo $list_id ?>">
 
-                        <div style="margin-top:1em;">
-                            <a href="index.php"><button type="button" class="btn btn-danger">Annuleren</button></a>
-                            <button type="submit" class="btn btn-success">Toevoegen</button>
-                        </div>
+                            <div style="margin-top:1em;">
+                                <a href="index.php"><button type="button" class="btn btn-danger">Annuleren</button></a>
+                                <button type="submit" class="btn btn-success">Toevoegen</button>
+                            </div>
 
                         </div>
                     </form>

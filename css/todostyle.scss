@@ -59,32 +59,54 @@
                 }
 
                 form {     
-                    label {
-                        margin-top: 15px;
-                    }
+                    .form-group {
 
-                    img {
-                        position: absolute;
-                        right: 20px;
-                        width: 20px;
-                        height: 20px;
-                    }                    
+                        #minute-input {
+                            display: inline;
+                            width: 50%;
+                        }
 
-                    h6 {
-                        margin-bottom: 0;
-                        margin-top: 10px;
-                    }
+                        label {
+                            margin-top: 20px;
+                        }
 
-                    ol {
                         img {
-                            margin-top: 5px;
+                            position: absolute;
+                            right: 20px;
+                            width: 20px;
+                            height: 20px;
+                        }                    
+
+                        h6 {
+                            margin-bottom: 0;
+                            margin-top: 10px;
+                        }
+
+                        ol {
+                            img {
+                                margin-top: 5px;
+                            }
                         }
                     }
                 }
+
                 img {
                     width: 25px;
                     height: 25px;
                     margin-left: 200px;
+                }
+
+                .trashbin {
+                    margin-left: 10px;
+                    margin-bottom: 3px;
+                }
+            }
+
+            li {
+                .edit-input {
+                    display: inline;
+                    width: 50%;
+                    margin-bottom: 5px;
                 }
             }
 

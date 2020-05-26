@@ -4,34 +4,15 @@ require('../inc/dbconn.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $number = $_POST['number'];
-    $time   = $_POST['time'];
+    $stmt = $conn->prepare('INSERT INTO tasks (task, duration, list_id) VALUES (:task, :duration, :list_id)');
 
-    // var array = [
-    //     {type: 'minute', seconds: 60}, 
-    //     {type: 'hour', seconds: 3600}, 
-    //     {type: 'day', seconds: 86400},
-    //     {type: 'week', seconds: 604800}, 
-    //     {type: 'month', seconds: 2419200},
-    //     {type: 'year', seconds: 29030400}
-    // ];
-
-    function durationCalculate() {
-        return number * time.seconds;
-    }
-
-    // $stmt = $conn->prepare('INSERT INTO tasks (task, duration, list_id) VALUES (:task, :duration, :list_id)');
-
-    // $stmt->bindParam(':task', $_POST['title']);
-    // $stmt->bindParam(':duration', $_POST['duration']);
-    // $stmt->bindParam(':list_id', $_POST['list_id']);
+    $stmt->bindParam(':task', $_POST['task']);
+    $stmt->bindParam(':duration', $_POST['duration']);
+    $stmt->bindParam(':list_id', $_POST['list_id']);
   
-    // $stmt->execute();
+    $stmt->execute();
   
-    // $conn = null;
-
-
-
+    $conn = null;
 ?>
 
 <!DOCTYPE html>
