@@ -2,11 +2,13 @@
 
 require('inc/dbconn.php');
 
-$sql = 'SELECT * FROM tasks WHERE id = :listid';
+$sql = 'SELECT * FROM tasks WHERE id = :taskid';
 $query = $conn->prepare($sql);
-$query->bindParam(':listid', $_GET['listid']);
+$query->bindParam(':taskid', $_GET['taskid']);
 $query->execute();
 $result = $query->fetch();
+
+var_dump($result)
 
 ?>
 
@@ -31,7 +33,7 @@ $result = $query->fetch();
         <div class="list" style="margin-top: 0; padding-top: 12.5rem">
             <div class="card" style="min-height: 0;">
                 <div class="card-body">
-                    <h5 class="card-title">Weet u zeker dat u deze taak, "<?php echo $result['description'];?>", wilt verwijderen?</h5>
+                    <h5 class="card-title">Weet u zeker dat u deze taak, "<?php echo $result['task'];?>", wilt verwijderen?</h5>
 
                     <?php // echo htmlspecialchars($_SERVER['PHP_SELF']) ?>
                     

@@ -119,7 +119,7 @@ var_dump($taskresult);
               <input class="form-control" type="text" name="title" value="<?= $listresult['title']?>">
               </input>
               <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-              <h6>Items</h6>
+              <h6 class="task-list">Items</h6>
               <ol>
 
                   <?php
