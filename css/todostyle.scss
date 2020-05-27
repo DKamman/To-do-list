@@ -50,7 +50,11 @@
         .card {
             min-height: 30rem;
             .card-body {
-                .card-title {                                            
+                .JSButton {
+                    cursor: pointer;
+                }
+                
+                .card-title {
                     img {
                         margin-left: 5px;
                         width: 20px;
