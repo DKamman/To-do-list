@@ -26,7 +26,7 @@ include('inc/indexhtmlstart.html');
                         <input type="hidden" name="list_id" value="<?php echo $list_id ?>">
 
                         <div style="margin-top:1em;">
-                            <a href="index.php"><button type="button" class="btn btn-danger">Annuleren</button></a>
+                            <a href="list.php?listid=<?= $list_id?>"><button type="button" class="btn btn-danger">Annuleren</button></a>
                             <button type="submit" class="btn btn-success">Toevoegen</button>
                         </div>
 

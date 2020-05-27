@@ -43,7 +43,7 @@
     }
 
     .list {
-        width: 30rem;
+        width: 60rem;
         margin: 0 auto;
         margin-top: 10rem;
 
@@ -53,13 +53,36 @@
                 .JSButton {
                     cursor: pointer;
                 }
-                
+
                 .card-title {
                     img {
                         margin-left: 5px;
                         width: 20px;
                         height: 20px;
                     }                
+                }
+                
+                ol {
+                    p {
+                        margin-bottom: 0px;
+                    }
+                    .task-table {
+
+                        tr {
+                            td {
+                                p {
+                                    margin-right: 20px;
+                                    margin-bottom: 0px;
+                                }
+                                span {
+                                    display: inline;
+                                }
+                                input {
+                                    display: inline;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 form {     
@@ -108,14 +131,6 @@
                 .trashbin {
                     margin-left: 10px;
                     margin-bottom: 3px;
-                }
-            }
-
-            li {
-                .edit-input {
-                    display: inline;
-                    width: 50%;
-                    margin-bottom: 5px;
                 }
             }
 

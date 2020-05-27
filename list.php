@@ -67,26 +67,30 @@ include('inc/indexhtmlstart.html');
           <a class="JSButton" onClick="editList()"><img class="edit-logo" src="img/pencil.png" alt="edit-logo"></a>
           <a href="deletelist.php?listid=<?= $listresult['id']?>"><img src="img/trashbin.png" alt="trashbin"></a>
         </h5>
+
         <ol>
-
+          <table class="task-table">
             <?php
-            // var_dump($taskresult);
-            if (count($taskresult) == 0) {
-              ?>
-              <p>U heeft nog geen items</p>
+              // var_dump($taskresult);
+              if (count($taskresult) == 0) {
+                ?>
+                <p>U heeft nog geen items</p>              
               <?php
-            } else {
-            foreach ($taskresult as $listrow) {
-            ?>
+                  } else {
+                  foreach ($taskresult as $taskrow) { ?>             
+              <tr>              
+                <td><li> <p> <?php echo $taskrow['task']?> </li> </p> </td>
+                <td> <p> <?php echo $taskrow['duration']?> Minuten </p> </td>
+                <td> <p> <?php echo $taskrow['state']?> </p> </td> 
+              </tr>            
+              <?php 
+                  } 
+                }
+              ?>
 
-            <li><?php echo $listrow['task']?></li>
-
-            <?php
-              }
-            }
-            ?>
-
+          </table>
         </ol>
+        
         <a href="addtask.php?listid=<?= $listresult['id']?>"><img src="img/plus.png" alt=""></a>
       </div>
     </div>
@@ -99,41 +103,44 @@ include('inc/indexhtmlstart.html');
         <form action="php/editlist.php" method="post">
           <input type="hidden" name="id" value="<?php echo $listresult['id'];?>"></input>
           <h5>Titel<a onClick="cancelEdit()"><img class="cancel-logo JSButton" src="img/cross.png" alt="edit-logo"></a></h5>
-          <input class="form-control" type="text" name="title" value="<?= $listresult['title']?>">
-          </input>
-          <h6 class="task-list">Items</h6>
+          <input class="form-control" type="text" name="title" value="<?= $listresult['title']?>"></input>
+          <h6 class="task-list card-title">Items</h6>
+
           <ol>
-
+            <table class="task-table">
               <?php
-              $i = 1;
-              // var_dump($taskresult);
-              if (count($taskresult) == 0) {
-                ?>
-                <p>U heeft nog geen items</p>
+                // var_dump($taskresult);
+                if (count($taskresult) == 0) {
+                  ?>
+                  <p>U heeft nog geen items</p>              
                 <?php
-              } else {
-              foreach ($taskresult as $taskrow) {
-              ?>
+                    } else {
+                    foreach ($taskresult as $taskrow) { ?>             
+                <tr>  
+                 <?php // echo $taskrow['id']; ?>            
+                  <td> <li> <input type="text" class="form-control" name="" value="<?php echo $taskrow['task']?>"> </li> </td>
+                  <td> <input type="text" class="form-control" name="" value="<?php echo $taskrow['duration']?>"><span>Minuten</span></td>
+                  <td> <input type="text" class="form-control" name="" value="<?php echo $taskrow['state']?>"> </td>
+                  <td> <a href="deletetask.php?taskid=<?= $taskrow['id']?>"><img class="trashbin" src="img/trashbin.png" alt="trashbin"></a> </td>
+                </tr>            
+                <?php 
+                    } 
+                  }
+                ?>
 
-              <li> <?= $taskrow['id']?> <input type="text" class="form-control edit-input" name="items[<?php echo $i?>]" value="<?php echo $taskrow['task']?>"><a href="deletetask.php?taskid=<?= $taskrow['id']?>"><img class="trashbin" src="img/trashbin.png" alt="trashbin"></a></li>
-
-              <?php
-                $i++;
-                }
-              }
-              ?>
-
+            </table>
           </ol>
-      </div>
+
+        </div>
       
-      <div class="card-end">
-        <button type="submit" class="btn btn-success">Opslaan</button>
-      </div>
+        <div class="card-end">
+          <button type="submit" class="btn btn-success">Opslaan</button>
+        </div>
       </form>
     </div>
 
             <!-- End of edit card -->
-            
+
 
   </div>
 </div> 

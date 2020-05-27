@@ -26,7 +26,7 @@
       float: right;
       line-height: 40px; }
   .main-content .list {
-    width: 30rem;
+    width: 60rem;
     margin: 0 auto;
     margin-top: 10rem; }
     .main-content .list .card {
@@ -37,6 +37,15 @@
         margin-left: 5px;
         width: 20px;
         height: 20px; }
+      .main-content .list .card .card-body ol p {
+        margin-bottom: 0px; }
+      .main-content .list .card .card-body ol .task-table tr td p {
+        margin-right: 20px;
+        margin-bottom: 0px; }
+      .main-content .list .card .card-body ol .task-table tr td span {
+        display: inline; }
+      .main-content .list .card .card-body ol .task-table tr td input {
+        display: inline; }
       .main-content .list .card .card-body form .form-group #minute-input {
         display: inline;
         width: 50%; }
@@ -62,10 +71,6 @@
       .main-content .list .card .card-body .trashbin {
         margin-left: 10px;
         margin-bottom: 3px; }
-      .main-content .list .card li .edit-input {
-        display: inline;
-        width: 50%;
-        margin-bottom: 5px; }
       .main-content .list .card .card-end {
         height: auto;
         padding: 20px; }
