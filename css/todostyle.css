@@ -43,9 +43,8 @@
         margin-right: 20px;
         margin-bottom: 0px; }
       .main-content .list .card .card-body ol .task-table tr td span {
-        display: inline; }
-      .main-content .list .card .card-body ol .task-table tr td input {
-        display: inline; }
+        margin-left: 10px;
+        margin-right: 60px; }
       .main-content .list .card .card-body form .form-group #minute-input {
         display: inline;
         width: 50%; }

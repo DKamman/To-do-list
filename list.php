@@ -77,6 +77,13 @@ include('inc/indexhtmlstart.html');
                 <p>U heeft nog geen items</p>              
               <?php
                   } else {
+              ?>
+              <tr>
+                <th>Taak</th>
+                <th>Duratie</th>
+                <th>Voltooid</th>
+              </tr>
+              <?php              
                   foreach ($taskresult as $taskrow) { ?>             
               <tr>              
                 <td><li> <p> <?php echo $taskrow['task']?> </li> </p> </td>
@@ -115,11 +122,20 @@ include('inc/indexhtmlstart.html');
                   <p>U heeft nog geen items</p>              
                 <?php
                     } else {
-                    foreach ($taskresult as $taskrow) { ?>             
+                ?>
+                <tr>
+                  <th>Taak</th>
+                  <th>Duratie</th>
+                  <th></th>
+                  <th>Voltooid</th>
+                </tr>
+                <?php
+                    foreach ($taskresult as $taskrow) { ?>  
                 <tr>  
-                 <?php // echo $taskrow['id']; ?>            
+                <?php // echo $taskrow['id']; ?>            
                   <td> <li> <input type="text" class="form-control" name="" value="<?php echo $taskrow['task']?>"> </li> </td>
-                  <td> <input type="text" class="form-control" name="" value="<?php echo $taskrow['duration']?>"><span>Minuten</span></td>
+                  <td> <input type="text" class="form-control" name="" value="<?php echo $taskrow['duration']?>"></td>
+                  <td><span>Minuten</span></td>
                   <td> <input type="text" class="form-control" name="" value="<?php echo $taskrow['state']?>"> </td>
                   <td> <a href="deletetask.php?taskid=<?= $taskrow['id']?>"><img class="trashbin" src="img/trashbin.png" alt="trashbin"></a> </td>
                 </tr>            

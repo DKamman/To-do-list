@@ -74,11 +74,10 @@
                                     margin-right: 20px;
                                     margin-bottom: 0px;
                                 }
+
                                 span {
-                                    display: inline;
-                                }
-                                input {
-                                    display: inline;
+                                    margin-left: 10px;
+                                    margin-right: 60px;
                                 }
                             }
                         }
@@ -87,7 +86,6 @@
 
                 form {     
                     .form-group {
-
                         #minute-input {
                             display: inline;
                             width: 50%;
