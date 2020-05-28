@@ -62,56 +62,61 @@ include('inc/indexhtmlstart.html');
 
   <div class="list">
     <div id="standardlist" class="card" style="display: block;">
+      <div class="card-begin">
+        <a class="JSButton" onClick="editList()"><img class="edit-logo" src="img/pencil.png" alt="edit-logo"></a>
+        <a href="deletelist.php?listid=<?= $listresult['id']?>"><img src="img/trashbin.png" alt="trashbin"></a>
+      </div>
       <div class="card-body">
-        <h5 class="card-title"><?= $listresult['title']?>
-          <a class="JSButton" onClick="editList()"><img class="edit-logo" src="img/pencil.png" alt="edit-logo"></a>
-          <a href="deletelist.php?listid=<?= $listresult['id']?>"><img src="img/trashbin.png" alt="trashbin"></a>
-        </h5>
+        <h3 class="card-title"><?= $listresult['title']?></h3>
 
         <ol>
           <table class="task-table">
+          <?php
+            // var_dump($taskresult);
+            if (count($taskresult) == 0) {
+              ?>
+              <p>U heeft nog geen items</p>              
             <?php
-              // var_dump($taskresult);
-              if (count($taskresult) == 0) {
-                ?>
-                <p>U heeft nog geen items</p>              
-              <?php
-                  } else {
-              ?>
-              <tr>
-                <th>Taak</th>
-                <th>Duratie</th>
-                <th>Voltooid</th>
-              </tr>
-              <?php              
-                  foreach ($taskresult as $taskrow) { ?>             
-              <tr>              
-                <td><li> <p> <?php echo $taskrow['task']?> </li> </p> </td>
-                <td> <p> <?php echo $taskrow['duration']?> Minuten </p> </td>
-                <td> <p> <?php echo $taskrow['state']?> </p> </td> 
-              </tr>            
-              <?php 
-                  } 
-                }
-              ?>
-
+                } else {
+            ?>
+            <tr>
+              <th>Taak</th>
+              <th>Duratie</th>
+              <th>Voltooid</th>
+            </tr>
+            <?php              
+                foreach ($taskresult as $taskrow) { ?>             
+            <tr>              
+              <td><li> <p> <?php echo $taskrow['task']?> </li> </p> </td>
+              <td> <p> <?php echo $taskrow['duration']?> Minuten </p> </td>
+              <td> <p> <?php echo $taskrow['state']?> </p> </td> 
+            </tr>            
+            <?php 
+                } 
+              }
+            ?>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th><a class="add-task" href="addtask.php?listid=<?= $listresult['id']?>"><img src="img/plus.png" alt=""></a></th>
+            </tr>
           </table>
         </ol>
-        
-        <a href="addtask.php?listid=<?= $listresult['id']?>"><img src="img/plus.png" alt=""></a>
+
       </div>
     </div>
 
             
-    <!-- Begin of edit card -->
+            <!-- Begin of edit card -->
 
     <div id="editlist" class="card" style="display: none;">
       <div class="card-body">
         <form action="php/editlist.php" method="post">
           <input type="hidden" name="id" value="<?php echo $listresult['id'];?>"></input>
-          <h5>Titel<a onClick="cancelEdit()"><img class="cancel-logo JSButton" src="img/cross.png" alt="edit-logo"></a></h5>
+          <h3 class="card-title">Titel</h3>
           <input class="form-control" type="text" name="title" value="<?= $listresult['title']?>"></input>
-          <h6 class="task-list card-title">Items</h6>
+          <h5 class="task-list card-title">Items</h5>
 
           <ol>
             <table class="task-table">
@@ -150,6 +155,7 @@ include('inc/indexhtmlstart.html');
         </div>
       
         <div class="card-end">
+          <button type="button" onClick="cancelEdit()" class="btn btn-danger">Annuleren</button>
           <button type="submit" class="btn btn-success">Opslaan</button>
         </div>
       </form>
