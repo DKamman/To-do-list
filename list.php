@@ -23,6 +23,17 @@ $query->bindParam(':listid', $_GET['listid']);
 $query->execute();
 $taskresult = $query->fetchAll();
 
+
+
+function finished() {
+  if ($taskresult['finished'] == 1) {
+    $value = 'Voltooid';
+  } 
+  if ($taskresult['finished'] == 0) {
+    $value = 'Niet voltooid';
+  }
+}
+
 include('inc/indexhtmlstart.html');
 ?>
 
@@ -68,17 +79,18 @@ include('inc/indexhtmlstart.html');
       </div>
       <div class="card-body">
         <h3 class="card-title"><?= $listresult['title']?></h3>
-
+        
+        <?php
+        // var_dump($taskresult);
+          if (count($taskresult) == 0) {
+        ?>
+          <p>U heeft nog geen items</p>
+          <table>
+        <?php
+          } else {
+        ?>
         <ol>
-          <table class="task-table">
-          <?php
-            // var_dump($taskresult);
-            if (count($taskresult) == 0) {
-              ?>
-              <p>U heeft nog geen items</p>              
-            <?php
-                } else {
-            ?>
+          <table class="task-table">              
             <tr>
               <th>Taak</th>
               <th>Duratie</th>
@@ -87,19 +99,19 @@ include('inc/indexhtmlstart.html');
             <?php              
                 foreach ($taskresult as $taskrow) { ?>             
             <tr>              
-              <td><li> <p> <?php echo $taskrow['task']?> </li> </p> </td>
-              <td> <p> <?php echo $taskrow['duration']?> Minuten </p> </td>
-              <td> <p> <?php echo $taskrow['state']?> </p> </td> 
+              <td><li> <p> <?php echo $taskrow['task'];?> </li> </p> </td>
+              <td> <p> <?php echo $taskrow['duration'];?> Minuten </p> </td>
+              <td> <p> <?php  var_dump($taskrow['finished']); ?> </p> </td> 
             </tr>            
             <?php 
                 } 
               }
             ?>
             <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th><a class="add-task" href="addtask.php?listid=<?= $listresult['id']?>"><img src="img/plus.png" alt=""></a></th>
+              <td style="padding: 0px 80px"></td>
+              <td></td>
+              <td></td>
+              <td><a class="add-task" href="addtask.php?listid=<?= $listresult['id']?>"><img src="img/plus.png" alt=""></a></td>
             </tr>
           </table>
         </ol>
@@ -118,39 +130,45 @@ include('inc/indexhtmlstart.html');
           <input class="form-control" type="text" name="title" value="<?= $listresult['title']?>"></input>
           <h5 class="task-list card-title">Items</h5>
 
+          <?php
+          // var_dump($taskresult);
+            if (count($taskresult) == 0) {
+          ?>
+            <p>U heeft nog geen items</p>
+            <table>
+          <?php
+            } else {
+          ?>
           <ol>
-            <table class="task-table">
-              <?php
-                // var_dump($taskresult);
-                if (count($taskresult) == 0) {
-                  ?>
-                  <p>U heeft nog geen items</p>              
-                <?php
-                    } else {
-                ?>
-                <tr>
-                  <th>Taak</th>
-                  <th>Duratie</th>
-                  <th></th>
-                  <th>Voltooid</th>
-                </tr>
-                <?php
-                    foreach ($taskresult as $taskrow) { ?>  
-                <tr>  
-                <?php // echo $taskrow['id']; ?>            
-                  <td> <li> <input type="text" class="form-control" name="" value="<?php echo $taskrow['task']?>"> </li> </td>
-                  <td> <input type="text" class="form-control" name="" value="<?php echo $taskrow['duration']?>"></td>
-                  <td><span>Minuten</span></td>
-                  <td> <input type="text" class="form-control" name="" value="<?php echo $taskrow['state']?>"> </td>
-                  <td> <a href="deletetask.php?taskid=<?= $taskrow['id']?>"><img class="trashbin" src="img/trashbin.png" alt="trashbin"></a> </td>
-                </tr>            
-                <?php 
-                    } 
-                  }
-                ?>
+            <table class="task-table">              
+              <tr>
+                <th>Taak</th>
+                <th>Duratie</th>
+                <th>Voltooid</th>
+              </tr>
+              <?php              
+                  foreach ($taskresult as $taskrow) { ?>             
+              <tr>              
+                <td><li> <p> <?php echo $taskrow['task'];?> </li> </p>
+                </td>
 
-            </table>
-          </ol>
+                <td> <p> <?php echo $taskrow['duration'];?> Minuten </p>
+                </td>
+
+                <td> <p> <?php echo $taskrow['finished'];?> </p> 
+                </td>
+
+                <td>
+                  <a href="edittask.php?taskid=<?= $taskrow['id']?>"><img src="img/pencil.png" alt="pencil"></a> 
+                  <a href="deletetask.php?taskid=<?= $taskrow['id']?>"><img src="img/trashbin.png" alt="trashbin"></a>
+                </td>
+              </tr>            
+              <?php 
+                  } 
+                }
+              ?>
+          </table>
+        </ol>
 
         </div>
       

@@ -35,6 +35,8 @@
         position: absolute;
         top: 20px;
         right: 20px; }
+        .main-content .list .card .card-begin .JSButton {
+          cursor: pointer; }
         .main-content .list .card .card-begin a img {
           margin-left: 5px;
           width: 25px;
@@ -51,6 +53,8 @@
           .main-content .list .card .card-body ol .task-table tr td span {
             margin-left: 10px;
             margin-right: 60px; }
+        .main-content .list .card .card-body form .form-group .edit-box {
+          margin-top: 25px; }
         .main-content .list .card .card-body form .form-group #minute-input {
           display: inline;
           width: 50%; }

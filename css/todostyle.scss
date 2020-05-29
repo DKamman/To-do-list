@@ -54,6 +54,10 @@
                 top: 20px;
                 right: 20px;
 
+                .JSButton {
+                    cursor: pointer;
+                }
+
                 a {
                     img {
                         margin-left: 5px;
@@ -92,6 +96,10 @@
 
                 form {     
                     .form-group {
+                        .edit-box {
+                            margin-top: 25px;
+                        }
+
                         #minute-input {
                             display: inline;
                             width: 50%;
