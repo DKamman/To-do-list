@@ -23,16 +23,7 @@ $query->bindParam(':listid', $_GET['listid']);
 $query->execute();
 $taskresult = $query->fetchAll();
 
-
-
-function finished() {
-  if ($taskresult['finished'] == 1) {
-    $value = 'Voltooid';
-  } 
-  if ($taskresult['finished'] == 0) {
-    $value = 'Niet voltooid';
-  }
-}
+include('php/filterqueries.php');
 
 include('inc/indexhtmlstart.html');
 ?>
@@ -93,15 +84,33 @@ include('inc/indexhtmlstart.html');
           <table class="task-table">              
             <tr>
               <th>Taak</th>
-              <th>Duratie</th>
-              <th>Voltooid</th>
+              <th>Duratie 
+                <form method="post">
+                  <input type="submit" name="durationup" value="up">
+                  <input type="submit" name="durationdown" value="down">
+                </form>  
+              </th>
+
+              <th>Voltooid 
+                <form method="post">
+                  <input type="submit" name="finishedup" value="up">
+                  <input type="submit" name="finisheddown" value="down">    
+                </form> 
+              </th>
             </tr>
             <?php              
                 foreach ($taskresult as $taskrow) { ?>             
             <tr>              
               <td><li> <p> <?php echo $taskrow['task'];?> </li> </p> </td>
               <td> <p> <?php echo $taskrow['duration'];?> Minuten </p> </td>
-              <td> <p> <?php  var_dump($taskrow['finished']); ?> </p> </td> 
+              <td> <p> 
+                <?php if ($taskrow['finished'] == "1") {
+                echo 'Voltooid';
+                } else {
+                    echo 'Niet voltooid';
+                  }?> 
+                </p> 
+              </td> 
             </tr>            
             <?php 
                 } 
@@ -155,7 +164,16 @@ include('inc/indexhtmlstart.html');
                 <td> <p> <?php echo $taskrow['duration'];?> Minuten </p>
                 </td>
 
-                <td> <p> <?php echo $taskrow['finished'];?> </p> 
+                <td>
+                  <p>
+                  <?php if ($taskrow['finished'] == "1") {
+                          echo 'Voltooid';
+                          } 
+                          else {
+                            echo 'Niet voltooid';
+                          }
+                  ?> 
+                  </p> 
                 </td>
 
                 <td>
